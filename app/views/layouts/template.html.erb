@@ -1,0 +1,9 @@
+<% content_for :content do %>
+  <%= if content_for?(:template_content)%>
+    <%= yield(:template_content)%>
+  <%else%>
+    <%= flash_messages%>
+    <%= yield %>
+  <%end%>
+<% end %>
+<%= render template: "layouts/application" %>

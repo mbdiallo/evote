@@ -1,0 +1,27 @@
+<aside id="sidebar">
+  <div class="sidebar-inner c-overflow" tabindex="1" style="overflow: hidden; outline: none;">
+      <div class="profile-menu toggled">
+          <a href="">
+              <div class="profile-pic">
+                <div style="height:52px;"></div>
+              </div>
+
+              <div class="profile-info">
+                  <%= current_user.name%>
+
+              </div>
+          </a>
+      </div>
+
+      <ul class="main-menu">
+          <li class="<%= "active" if controller.controller_name == "users" and controller.action_name == "dashboard"%>">
+            <%#= link_to user_path do%>
+              <i class="zmdi zmdi-home"></i> Home
+            <%#end%>
+          </li>
+
+
+
+      </ul>
+  </div>
+</aside>

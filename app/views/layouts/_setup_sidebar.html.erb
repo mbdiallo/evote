@@ -1,0 +1,30 @@
+<div class="block-header">
+  <h2>&nbsp;</h2>
+</div>
+
+<div class="card">
+  <div class="listview lv-bordered lv-lg">
+    <div class="lv-header-alt clearfix">
+      <h2 class="lvh-label hidden-xs">Setup</h2>
+    </div>
+    <div class="lv-body">
+      <% Account::Setup.sort_by{|k, v| k}.each do |k, v|%>
+        <div class="lv-item media <%= "active" if @step == k%>">
+          <div class="media-body">
+            <div class="lv-title">
+              <%= link_to v[:name], setup_accounts_url(step: k)%>
+            </div>
+          </div>
+        </div>
+      <%end%>
+      <div class="lv-item media">
+        <%if @step != 1%>
+          <%= link_to "Previous", setup_accounts_url(step: (@step-1)), class: "btn btn-white"%>
+        <%end%>
+        <%if @step != Account::Setup.keys.map{|x| x.to_i}.max%>
+          <%= link_to "Next", setup_accounts_url(step: (@step+1)), class: "btn btn-primary pull-right"%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

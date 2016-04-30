@@ -1,0 +1,19 @@
+<% content_for :content do %>
+  <%= flash_messages%>
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "layouts/setup_sidebar"%>
+    </div>
+    <div class="col-md-9">
+      <%= flash_messages%>
+      <% if content_for?(:template_content)%>
+        <%= yield :template_content%>
+      <%else%>
+        <%= flash_messages%>
+        <%= yield %>
+      <%end%>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

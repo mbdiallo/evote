@@ -1,0 +1,31 @@
+<header id="header">
+            <ul class="header-inner">
+                <li id="menu-trigger" data-trigger="#sidebar">
+                    <div class="line-wrap">
+                        <div class="line top"></div>
+                        <div class="line center"></div>
+                        <div class="line bottom"></div>
+                    </div>
+                </li>
+
+                <li class="logo hidden-xs">
+                    <a href="/"><%= content_for?(:title) ? yield(:title) : "Voices" %></a>
+                </li>
+
+                <li class="pull-right">
+                <ul class="top-menu">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="tm-settings" href=""></a>
+                        <ul class="dropdown-menu dm-icon pull-right">
+                          <li>
+                            <%= link_to destroy_user_session_path, :method => :delete do %>
+                            <i class="zmdi zmdi-open-in-new"></i> Log out
+                            <%end%>
+                          </li>
+                        </ul>
+                    </li>
+                  </ul>
+
+            <!-- Top Search Content -->
+
+        </li></ul></header>

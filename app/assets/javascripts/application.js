@@ -25,13 +25,6 @@
 //= require vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js
 //= require vendors/bower_components/typeahead.js/dist/typeahead.bundle.min.js
 //= require vendors/bootstrap-growl/bootstrap-growl.min.js
-//= require bootstrap-wizard/bootstrap-wizard.min.js
-//= require jquery-validate/jquery.validate.min.js
-//= require jquery-validate/additional-methods.min.js
 //= require jquery.remotipart
-//= require tooltipster-master/js/jquery.tooltipster.js
 //= require js/functions.js
 //= require custom
-//= require validations
-//= require calendar.js
-//= require search.js

@@ -19,10 +19,6 @@
  *= require vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css
  *= require vendors/bower_components/fullcalendar/dist/fullcalendar.min.css
  *= require vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css
- *= require bootstrap-wizard/bootstrap-wizard
- *= require jstree/dist/themes/default/style.min.css
- *= require tooltipster-master/css/tooltipster
- *= require tooltipster-master/css/themes/tooltipster-shadow
  *= require css/app.min.1.css
  *= require css/app.min.2.css
  *= require custom

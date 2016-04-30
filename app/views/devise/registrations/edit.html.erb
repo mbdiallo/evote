@@ -1,0 +1,20 @@
+<div class="block-header">
+  <h2>
+    Editing your profile
+    <div class="text-muted pull-right">
+      <%= link_to "Back", root_url, class: "btn btn-sm btn-default"%>
+    </div>
+  </h2>
+</div>
+<div class="card">
+  <div class="listview lv-bordered lv-lg">
+    <div class="lv-body">
+      <div class="lv-item media form">
+        <%= semantic_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|%>
+          <%= devise_error_messages! %>
+          <%= render partial: "users/self_fields", locals: {f: f}%>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
