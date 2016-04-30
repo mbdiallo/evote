@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160430165224) do
+ActiveRecord::Schema.define(version: 20160430172025) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20160430165224) do
     t.integer  "count",          limit: 4,   default: 0, null: false
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
+    t.string   "image",          limit: 255
   end
 
 end

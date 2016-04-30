@@ -1,25 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="block-header">
+  <h2>Votes</h2>
+</div>
 
-<h1>Listing Votes</h1>
+<%= render partial: 'shared/notices'%>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="card">
+  <div class="listview lv-bordered lv-lg">
+    <div class="lv-header-alt clearfix">
+      <h2 class="center"><%=@total_votes  %> Votes</h2>
 
-  <tbody>
-    <% @votes.each do |vote| %>
-      <tr>
-        <td><%= link_to 'Show', vote %></td>
-        <td><%= link_to 'Edit', edit_vote_path(vote) %></td>
-        <td><%= link_to 'Destroy', vote, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="pull-right">
 
-<br>
+      </div>
+    </div>
 
-<%= link_to 'New Vote', new_vote_path %>
+    <div class="lv-body">
+      <div class="lv-item media normal">
+        <% if @votes.any? %>
+          <% @votes.each do |user|%>
+            <div class="col-md-6">
+              <%#= image_tag (user.image) %>
+              <br>
+              <%= user.candidate_name %>
+
+              <%= render partial: 'vote', locals: {user: user} %>
+            </div>
+          <%end%>
+        <%else%>
+           <i class="center">  <%= link_to "Add Candidates", new_vote_path%></i>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>

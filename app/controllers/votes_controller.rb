@@ -5,7 +5,15 @@ class VotesController < ApplicationController
 
 
   def index
-    @votes = Vote.all
+    @vote = Vote.new
+    @user = User.find current_user.id
+    if @user.has_voted
+      @votes = Vote.all
+      @total_votes = @votes.sum(:count)
+    else
+      redirect_to users_path, notice: 'Candidate record was successfully created.'
+    end
+
   end
   # GET /campus/1
   # GET /campus/1.json
@@ -40,9 +48,16 @@ class VotesController < ApplicationController
   # PATCH/PUT /campus/1
   # PATCH/PUT /campus/1.json
   def update
+    @user = User.find current_user.id
+
     respond_to do |format|
       if @vote.update(vote_params)
-        format.html { redirect_to @vote, notice: 'You have successfully voted!' }
+        @user.has_voted = true
+        @vote.count += 1
+        @vote.save
+        @user.save
+        current_user.has_voted = true
+        format.html { redirect_to users_path, notice: 'You have successfully voted!' }
         format.json { render :show, status: :ok, location: @vote }
       else
         format.html { render :edit }
@@ -61,6 +76,6 @@ class VotesController < ApplicationController
 
 
     def vote_params
-      params.require(:vote).permit(:candidate_name)
+      params.require(:vote).permit(:candidate_name, :image)
     end
 end

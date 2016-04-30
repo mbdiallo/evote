@@ -1,0 +1,9 @@
+<%= form_for(user) do |f| %>
+  <div class="form-group">
+    <%= f.hidden_field :candidate_name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Vote" %>
+  </div>
+<% end %>
