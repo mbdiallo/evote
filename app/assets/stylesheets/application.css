@@ -10,6 +10,20 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
- *= require_self
+ *= require font-awesome
+ *= require bootstrap-wysihtml5
+ *= require bootstrap3-editable/bootstrap-editable
+ *= require formtastic-bootstrap
+ *= require vendors/bower_components/animate.css/animate.min.css
+ *= require vendors/bower_components/bootstrap-sweetalert/lib/sweet-alert.css
+ *= require vendors/bower_components/material-design-iconic-font/dist/css/material-design-iconic-font.min.css
+ *= require vendors/bower_components/fullcalendar/dist/fullcalendar.min.css
+ *= require vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.css
+ *= require bootstrap-wizard/bootstrap-wizard
+ *= require jstree/dist/themes/default/style.min.css
+ *= require tooltipster-master/css/tooltipster
+ *= require tooltipster-master/css/themes/tooltipster-shadow
+ *= require css/app.min.1.css
+ *= require css/app.min.2.css
+ *= require custom
  */
