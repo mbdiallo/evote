@@ -1,1 +1,30 @@
-jhg
+<div class="block-header">
+  <h2>Votes</h2>
+</div>
+
+<div id="flash">
+
+</div>
+
+<div class="card">
+  <div class="listview lv-bordered lv-lg">
+    <div class="lv-header-alt clearfix">
+      <h2 class="lvh-label hidden-xs">Votes</h2>
+
+      <div class="pull-right">
+
+      </div>
+    </div>
+
+    <div class="lv-body">
+      <div class="lv-item media normal" id="the_form">
+        <% if @users.any? %>
+          <% @users.each do |user|%>
+            <%= user.name %>
+          <%end%>
+        <%end%>
+      </div>
+    </div>
+
+  </div>
+</div>

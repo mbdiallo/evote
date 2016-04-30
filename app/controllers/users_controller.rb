@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy, :tooltip]
 
   def dashboard
+    @users = User.all
   end
 
   def tooltip
