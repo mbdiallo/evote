@@ -6,12 +6,38 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @user = User.new
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @user.find params[:id]
+  end
+
+  def activate
+    if params[:is_allowed].nil?
+        redirect_to users_path
+    else
+      if params[:activate]
+        @user = User.find(params[:is_allowed])
+
+          @user.each do |user|
+            user.update_attributes!(:is_allowed => true)
+          end
+          redirect_to users_path
+        else
+          deactivate
+        end
+    end
+  end
+
+  def deactivate
+    @user = User.find(params[:is_allowed])
+    @user.each do |user|
+      user.update_attributes!(:is_allowed => false)
+    end
+    redirect_to users_path
   end
 
   # GET /users/new
@@ -77,6 +103,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:user].permit(:name, :email,:image)
+      params[:user].permit(:name, :email,:is_allowed)
     end
 end

@@ -17,5 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :votes
-  resources :users
+  resources :users do
+    collection do
+      post :activate
+      get :activate
+    end
+  end
 end

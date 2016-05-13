@@ -7,22 +7,41 @@
   <div class="listview lv-bordered lv-lg">
     <div class="lv-header-alt clearfix">
       <h2 class="lvh-label hidden-xs">Votes</h2>
+      <%= form_for @user, url: activate_users_path do |f| %>
+
       <div class="pull-right">
+        <%= f.submit "Allow", name: 'activate' %>
+        <%= f.submit "Desallow", name: 'deactivate' %>
       </div>
     </div>
 
     <div class="lv-body">
       <div class="lv-item media normal" id="the_form">
         <% if @users.any? %>
+
           <% @users.each do |user|%>
+
             <div class="col-md-2">
               <%= user.student_id %>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <%= user.name %>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
               <%= user.email %>
+            </div>
+            <div class="col-md-2">
+              <div class="checkbox">
+                <label>
+                  <%= check_box_tag "is_allowed[]", user.id %>
+                  <i class="input-helper"></i>
+                  <% if !user.is_allowed %>
+                    <span style="color: red">Cannot vote</span>
+                  <%else%>
+                    <span style="color: green">Can vote</span>
+                  <%end%>
+                </label>
+              </div>
             </div>
             <div class="col-md-2">
               <% if !user.has_voted %>
@@ -31,7 +50,11 @@
                 <span style="color: green">Has voted</span>
               <%end%>
             </div>
+
           <%end%>
+
+        <%end%>
+
         <%end%>
       </div>
     </div>
