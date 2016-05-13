@@ -1,13 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :votes
-  resources :votes
-  resources :users
-  devise_for :users, controllers: {registrations: 'users/registrations'}
+
+  devise_for :users, controllers: {registrations: 'registrations'}
 
   authenticated :user do
     devise_scope :user do
-      root to: "users#dashboard"
+      root to: "users#index"
       get '/users/sign_out' => 'devise/sessions#destroy'
     end
   end
@@ -17,4 +15,7 @@ Rails.application.routes.draw do
       root to: "devise/sessions#new", :as => "unauthenticated"
     end
   end
+
+  resources :votes
+  resources :users
 end
