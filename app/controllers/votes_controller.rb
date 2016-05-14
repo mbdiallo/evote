@@ -6,7 +6,7 @@ class VotesController < ApplicationController
 
   def index
     @vote = Vote.new
-    @show_time = Result.all.first
+    @show_time = Result.all
     @user = User.find current_user.id
     if @user.has_voted
       redirect_to welcome_votes_path, notice: 'Access denied!'
