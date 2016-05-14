@@ -7,7 +7,7 @@
 <div class="card">
   <div class="listview lv-bordered lv-lg">
     <div class="lv-header-alt clearfix">
-      <h2 class="center">Click on the picture to vote </h2>
+      <h2 class="center"></h2>
 
       <div class="pull-right">
 
@@ -16,8 +16,12 @@
 
     <div class="lv-body">
       <div class="media normal">
-        <% @results.each do |result| %>
-          <h1><%= link_to 'Edit', edit_result_path(result) %></h1>
+        <% if @results.any? %>
+          <% @results.each do |result| %>
+            <h1><%= link_to 'Edit', edit_result_path(result) %></h1>
+          <% end %>
+        <%else%>
+           <h1>Nothing to show yet</h1>
         <% end %>
       </div>
     </div>

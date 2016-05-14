@@ -22,8 +22,10 @@
               <div class="col-md-6">
                 <%= render partial: 'vote', locals: {user: user} %>
                 <br>
-                <% if @show_time.show_time %>
-                  <h4 class="center"><%= user.count %></h4>
+                <% if @show_time.any? %>
+                  <% if @show_time.show_time %>
+                    <h4 class="center"><%= user.count %></h4>
+                  <%end%>
                 <%end%>
               </div>
             <%end%>
