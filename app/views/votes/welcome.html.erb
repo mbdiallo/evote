@@ -10,9 +10,9 @@
     <div class="lv-body">
       <div class="media normal">
          <% if current_user.is_allowed %>
-            <h1 class="center"><%= link_to "Click to vote", votes_path %></h1>
+            <h1 ><%= link_to "Click to vote", votes_path %></h1>
          <%else%>
-          <h1 class="center">Welcome</h1>
+          <h1 >Welcome</h1>
          <%end%>
     </div>
   </div>

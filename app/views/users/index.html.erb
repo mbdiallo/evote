@@ -6,9 +6,11 @@
 <div class="card">
   <div class="listview lv-bordered lv-lg">
     <div class="lv-header-alt clearfix">
-      <h2 class="lvh-label hidden-xs">Votes</h2>
-      <%= form_for @user, url: activate_users_path do |f| %>
 
+      <%= form_for @user, url: activate_users_path do |f| %>
+      <div class="pull-left">
+        <%= link_to "Add Candidate", new_vote_path, class: 'btn btn-primary' %>
+      </div>
       <div class="pull-right">
         <%= f.submit "Allow", name: 'activate' %>
         <%= f.submit "Desallow", name: 'deactivate' %>
