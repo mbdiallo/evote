@@ -7,7 +7,7 @@
 <div class="card">
   <div class="listview lv-bordered lv-lg">
     <div class="lv-header-alt clearfix">
-      <h2 class="center"><%=@total_votes  %> Votes</h2>
+      <h2 class="center">Click on the picture to vote </h2>
 
       <div class="pull-right">
 
@@ -15,19 +15,23 @@
     </div>
 
     <div class="lv-body">
-      <div class="lv-item media normal">
-        <% if @votes.any? %>
-          <% @votes.each do |user|%>
-            <div class="col-md-6">
-              <%#= image_tag (user.image) %>
-              <br>
-              <%= user.candidate_name %>
-
-              <%= render partial: 'vote', locals: {user: user} %>
-            </div>
+      <div class="media normal">
+        <% if current_user.is_allowed %>
+          <% if @votes.any? %>
+            <% @votes.each do |user|%>
+              <div class="col-md-6">
+                <%= render partial: 'vote', locals: {user: user} %>
+                <br>
+                <% if @show_time.show_time %>
+                  <h4 class="center"><%= user.count %></h4>
+                <%end%>
+              </div>
+            <%end%>
+          <%else%>
+             <i class="center">  <%= link_to "Add Candidates", new_vote_path%></i>
           <%end%>
         <%else%>
-           <i class="center">  <%= link_to "Add Candidates", new_vote_path%></i>
+          <h1 class="center" style="color: red">You are not allowed to vote!</h1>
         <%end%>
       </div>
     </div>

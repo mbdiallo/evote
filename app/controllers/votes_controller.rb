@@ -6,12 +6,13 @@ class VotesController < ApplicationController
 
   def index
     @vote = Vote.new
+    @show_time = Result.all.first
     @user = User.find current_user.id
     if @user.has_voted
+      redirect_to welcome_votes_path, notice: 'Access denied!'
+    else
       @votes = Vote.all
       @total_votes = @votes.sum(:count)
-    else
-      redirect_to users_path, notice: 'Candidate record was successfully created.'
     end
 
   end
@@ -22,27 +23,37 @@ class VotesController < ApplicationController
 
   # GET /campus/new
   def new
-    @vote = Vote.new
+    if current_user.admin
+      @vote = Vote.new
+    else
+      redirect_to welcome_votes_path
+    end
   end
 
   # GET /campus/1/edit
   def edit
+    if current_user.admin
+
+    else
+      redirect_to welcome_votes_path
+    end
   end
 
   # POST /campus
   # POST /campus.json
   def create
-    @vote = Vote.new(vote_params)
 
-    respond_to do |format|
-      if @vote.save
-        format.html { redirect_to votes_path, notice: 'Candidate record was successfully created.' }
-        format.json { render :show, status: :created, location: @vote }
-      else
-        format.html { render :new }
-        format.json { render json: @vote.errors, status: :unprocessable_entity }
+      @vote = Vote.new(vote_params)
+
+      respond_to do |format|
+        if @vote.save
+          format.html { redirect_to votes_path, notice: 'Candidate record was successfully created.' }
+          format.json { render :show, status: :created, location: @vote }
+        else
+          format.html { render :new }
+          format.json { render json: @vote.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /campus/1
@@ -57,7 +68,7 @@ class VotesController < ApplicationController
         @vote.save
         @user.save
         current_user.has_voted = true
-        format.html { redirect_to users_path, notice: 'You have successfully voted!' }
+        format.html { redirect_to welcome_votes_path, notice: 'You have successfully voted!' }
         format.json { render :show, status: :ok, location: @vote }
       else
         format.html { render :edit }

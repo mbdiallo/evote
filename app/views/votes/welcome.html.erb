@@ -1,0 +1,19 @@
+<div class="block-header">
+  <h2>Welcome <%= current_user.name%></h2>
+</div>
+
+<%= render partial: 'shared/notices'%>
+
+<div class="card">
+  <div class="listview lv-bordered lv-lg">
+
+    <div class="lv-body">
+      <div class="media normal">
+         <% if current_user.is_allowed %>
+            <h1 class="center"><%= link_to "Click to vote", votes_path %></h1>
+         <%else%>
+          <h1 class="center">Welcome</h1>
+         <%end%>
+    </div>
+  </div>
+</div>

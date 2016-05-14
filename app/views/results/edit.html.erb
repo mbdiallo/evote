@@ -1,0 +1,18 @@
+<%= render partial: 'shared/notices'%>
+<div class="block-header">
+  <h2>Welcome <%= current_user.name %></h2>
+</div>
+
+<div class="card">
+  <div class="listview lv-bordered lv-lg">
+    <div class="lv-header-alt clearfix">
+
+    </div>
+
+    <div class="lv-body">
+      <div class="lv-item media normal">
+        <%= render partial: 'form' %>
+      </div>
+    </div>
+  </div>
+</div>

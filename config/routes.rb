@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
 
+  resources :results
   devise_for :users, controllers: {registrations: 'registrations'}
 
   authenticated :user do
     devise_scope :user do
-      root to: "users#index"
+      root to: "votes#welcome"
       get '/users/sign_out' => 'devise/sessions#destroy'
     end
   end
@@ -16,7 +17,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :votes
+  resources :votes do
+    collection do
+      get :welcome
+    end
+  end
   resources :users do
     collection do
       post :activate

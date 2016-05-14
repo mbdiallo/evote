@@ -5,7 +5,11 @@
 
     <%= render partial: "layouts/navigation"%>
     <section id="main">
-      <%= render partial: "layouts/sidebar"%>
+      <% if user_signed_in? %>
+        <% if current_user.admin %>
+          <%= render partial: "layouts/sidebar"%>
+        <%end%>
+      <%end%>
       <section id="content">
         <div class="container">
           <%if content_for?(:content)%>

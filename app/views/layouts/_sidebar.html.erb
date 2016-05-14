@@ -8,20 +8,26 @@
 
               <div class="profile-info">
                   <%= current_user.name%>
-
               </div>
           </a>
       </div>
 
       <ul class="main-menu">
-          <li class="<%= "active" if controller.controller_name == "users" and controller.action_name == "dashboard"%>">
-            <%#= link_to user_path do%>
-              <i class="zmdi zmdi-home"></i> Home
-            <%#end%>
+          <li class="<%= "active" if controller.controller_name == "users" %>">
+            <%= link_to users_path do%>
+              <i class="fa fa-list"></i> Users
+            <%end%>
           </li>
-
-
-
+          <li class="<%= "active" if controller.controller_name == "votes"%>">
+            <%= link_to votes_path do%>
+              <i class="fa fa-archive"></i> Poll
+            <%end%>
+          </li>
+          <li class="<%= "active" if controller.controller_name == "results"%>">
+            <%= link_to edit_result_path(Result.where(id: 1).first.id) do%>
+              <i class="fa fa-eye"></i> Display result
+            <%end%>
+          </li>
       </ul>
   </div>
 </aside>

@@ -5,8 +5,12 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
-    @user = User.new
+    if current_user.admin
+      @users = User.all
+      @user = User.new
+    else
+      redirect_to welcome_votes_path
+    end
   end
 
   # GET /users/1
@@ -21,7 +25,6 @@ class UsersController < ApplicationController
     else
       if params[:activate]
         @user = User.find(params[:is_allowed])
-
           @user.each do |user|
             user.update_attributes!(:is_allowed => true)
           end
@@ -42,17 +45,27 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    if current_user.admin
+      @user = User.new
+    else
+      redirect_to welcome_votes_path
+    end
+
   end
 
   # GET /users/1/edit
   def edit
-    if current_user.id != @user.id
-      respond_to do |format|
-      format.html { redirect_to edit_user_path(id: current_user.id) }
-    end
+    if current_user.admin
+      if current_user.id != @user.id
+        respond_to do |format|
+        format.html { redirect_to edit_user_path(id: current_user.id) }
+      end
+      else
+      end
     else
+      redirect_to welcome_votes_path
     end
+
   end
 
   # POST /users

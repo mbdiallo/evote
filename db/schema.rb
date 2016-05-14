@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160513103050) do
+ActiveRecord::Schema.define(version: 20160514091016) do
+
+  create_table "results", force: :cascade do |t|
+    t.boolean  "show_time",  default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -30,6 +36,8 @@ ActiveRecord::Schema.define(version: 20160513103050) do
     t.datetime "updated_at",                                         null: false
     t.boolean  "has_voted",                          default: false
     t.boolean  "is_allowed",                         default: false
+    t.boolean  "admin",                              default: false
+    t.boolean  "result_time",                        default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
