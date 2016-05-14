@@ -7,7 +7,7 @@
 <div class="card">
   <div class="listview lv-bordered lv-lg">
     <div class="lv-header-alt clearfix">
-      <h2 class="center">Click on the picture to vote </h2>
+      <h2>Click on the picture to vote </h2>
 
       <div class="pull-right">
 
@@ -19,7 +19,7 @@
         <% if current_user.is_allowed %>
           <% if @votes.any? %>
             <% @votes.each do |user|%>
-              <div class="col-md-6">
+              <div class="col-md-6 ">
                 <%= render partial: 'vote', locals: {user: user} %>
                 <br>
                 <% if @show_time.any? %>
