@@ -5,4 +5,4 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
   # User.create(name: 'Musab', email: 'admin@voices.com', password: 'This120%Good', admin: true)
-   User.create(show_time: false)
+   Result.create(show_time: false)
