@@ -23,7 +23,7 @@
                 <%= render partial: 'vote', locals: {user: user} %>
                 <br>
                 <% if @show_time.any? %>
-                  <% if @show_time.show_time %>
+                  <% if @show_time.show_time.first %>
                     <h4 class="center"><%= user.count %></h4>
                   <%end%>
                 <%end%>
