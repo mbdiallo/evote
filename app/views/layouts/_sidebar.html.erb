@@ -24,9 +24,9 @@
             <%end%>
           </li>
           <li class="<%= "active" if controller.controller_name == "results"%>">
-            <%#= link_to edit_result_path(Result.where(id: 1).first.id) do%>
+            <%= link_to results_path do%>
               <i class="fa fa-eye"></i> Display result
-            <%#end%>
+            <%end%>
           </li>
       </ul>
   </div>
